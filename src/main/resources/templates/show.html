@@ -5,17 +5,18 @@
 </head>
 <body>
 <div>
-  <h1>grades</h1>
+  <h2>IMDB: Top 5 Episodes</h2>
   <table>
     <tr>
       <td>Name</td>
       <td>Subject</td>
       <td>Score</td>
     </tr>
-    <tr th:object="${grade}">
-      <td th:text="*{name}"></td>
-      <td th:text="*{subject}"></td>
-      <td th:text="*{score}"></td>
+
+    <tr th:object="${second}">
+      <td th:text="*{title}"></td>
+      <td th:text="*{episode}"></td>
+      <td th:text="*{rating}"></td>
     </tr>
   </table>
 </div>

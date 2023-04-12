@@ -40,6 +40,11 @@ public class BetterContactServiceImp implements ContactService {
 
   @Override
   public void updateContact(String id, Contact contact) {
-    
+
+  }
+
+  @Override
+  public void deleteContact(String id) {
+
   }
 }

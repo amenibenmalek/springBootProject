@@ -3,7 +3,7 @@ package com.benmalek.springBootApp.Service;
 
 import com.benmalek.springBootApp.Model.Contact;
 import com.benmalek.springBootApp.Repository.ContactRepository;
-import com.benmalek.springBootApp.exception.NoContactException;
+import com.benmalek.springBootApp.exception.ContactNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class ContactServiceImp implements ContactService {
   }
 
   @Override
-  public Contact getContactById(String id) throws NoContactException {
+  public Contact getContactById(String id) throws ContactNotFoundException {
     return contactRepository.getContact(findIndexById(id));
   }
 
@@ -32,11 +32,11 @@ public class ContactServiceImp implements ContactService {
    * @param id
    * @return index
    */
-  private int findIndexById(String id) throws NoContactException {
+  private int findIndexById(String id)  {
     return IntStream.range(0 , contactRepository.getContacts().size())
       .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
       .findFirst()
-      .orElseThrow(NoContactException::new);
+      .orElseThrow(() -> new ContactNotFoundException(id));
   }
 
   @Override
@@ -51,12 +51,12 @@ public class ContactServiceImp implements ContactService {
   }
 
   @Override
-  public void updateContact(String id, Contact contact) throws NoContactException{
+  public void updateContact(String id, Contact contact) throws ContactNotFoundException{
    contactRepository.updateContact(findIndexById(id),contact);
   }
 
   @Override
-  public void deleteContact(String id) throws NoContactException {
+  public void deleteContact(String id) throws ContactNotFoundException {
     contactRepository.deleteContact(findIndexById(id));
   }
 }

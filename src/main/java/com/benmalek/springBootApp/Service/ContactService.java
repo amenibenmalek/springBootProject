@@ -1,7 +1,7 @@
 package com.benmalek.springBootApp.Service;
 
 import com.benmalek.springBootApp.Model.Contact;
-import com.benmalek.springBootApp.exception.NoContactException;
+import com.benmalek.springBootApp.exception.ContactNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.List;
 @Service
 public interface ContactService {
 
-   Contact getContactById(String id) throws NoContactException;
+   Contact getContactById(String id) throws ContactNotFoundException;
 
    Contact saveContact(Contact contact);
 
    List<Contact> getAllContact();
 
-   void updateContact(String id , Contact contact) throws NoContactException;
+   void updateContact(String id , Contact contact) throws ContactNotFoundException;
 
-   void deleteContact(String id) throws NoContactException;
+   void deleteContact(String id) throws ContactNotFoundException;
 }

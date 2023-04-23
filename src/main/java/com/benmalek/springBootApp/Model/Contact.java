@@ -1,10 +1,19 @@
 package com.benmalek.springBootApp.Model;
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.UUID;
 
 public class Contact {
 
+  /**
+   * id
+   */
   private String id;
+
+  @NotBlank(message = "Name cannot be blank")
   private String name;
+
+  @NotBlank(message = "Number cannot be blank")
   private String phoneNumber;
 
   public Contact(String id, String name, String phoneNumber) {

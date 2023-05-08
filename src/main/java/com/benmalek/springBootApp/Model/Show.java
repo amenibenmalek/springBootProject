@@ -1,12 +1,12 @@
-package com.benmalek.springBootApp.controller;
+package com.benmalek.springBootApp.Model;
 
 public class Show {
 
-  private String title ;
+  private String title;
 
-  private String episode ;
+  private String episode;
 
-  private double rating ;
+  private double rating;
 
 
   public Show() {

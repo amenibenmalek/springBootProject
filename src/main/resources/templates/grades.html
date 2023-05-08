@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Workbook</title>
+    <title>Workbook</title>
 </head>
 <body>
 <div>
-  <h1>grades</h1>
-  <table>
-    <tr>
-      <td>Name</td>
-      <td>Subject</td>
-      <td>Score</td>
-    </tr>
-    <tr th:object="${grade}">
-      <td th:text="*{name}"></td>
-      <td th:text="*{subject}"></td>
-      <td th:text="*{score}"></td>
-    </tr>
-  </table>
+    <h1>grades</h1>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Subject</td>
+            <td>Score</td>
+        </tr>
+        <tr th:object="${grades}">
+            <td th:text="*{name}"></td>
+            <td th:text="*{subject}"></td>
+            <td th:text="*{score}"></td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

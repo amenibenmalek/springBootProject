@@ -1,24 +1,27 @@
 package com.benmalek.springBootApp.Service;
 
+import com.benmalek.springBootApp.Model.Grade;
 import com.benmalek.springBootApp.Model.Student;
 import com.benmalek.springBootApp.Repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class StudentSeviceImpl implements StudentService {
 
 
   @Qualifier("studentRepository")
-  @Autowired
+  //@Autowired
   private StudentRepository studentRepository;
 
   @Override
   public Student getStudent(Long id) {
-    return studentRepository.findById(id).orElse(null);
+    printGrades(studentRepository.findById(id).get());
+    return studentRepository.findById(id).get();
   }
 
   @Override
@@ -33,7 +36,13 @@ public class StudentSeviceImpl implements StudentService {
 
   @Override
   public void deleteStudent(Long id) {
-  studentRepository.deleteById(id);
+    studentRepository.deleteById(id);
   }
 
+  void printGrades(Student student) {
+    for (Grade grade : student.getGradeList()
+    ) {
+      System.out.println("---------- Score --------- : " + grade.getScore());
+    }
+  }
 }

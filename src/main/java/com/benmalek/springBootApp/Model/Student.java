@@ -1,15 +1,18 @@
 package com.benmalek.springBootApp.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 public class Student {
 
@@ -18,11 +21,17 @@ public class Student {
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "name" , nullable = false)
+  @NonNull
+  @Column(name = "name", nullable = false)
   private String name;
 
-  @Column(name = "birth_date" , nullable = false)
+  @NonNull
+  @Column(name = "birth_date", nullable = false)
   private LocalDate birthDate;
+
+  @JsonIgnore
+  @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+  private List<Grade> gradeList;
 
 
 }

@@ -1,11 +1,9 @@
 package com.benmalek.springBootApp.Repository;
-import com.benmalek.springBootApp.Model.Contact ;
 
-
+import com.benmalek.springBootApp.Model.Contact;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Repository

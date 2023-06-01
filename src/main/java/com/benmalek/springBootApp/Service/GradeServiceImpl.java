@@ -5,19 +5,23 @@ import com.benmalek.springBootApp.Model.Grade;
 import com.benmalek.springBootApp.Model.Student;
 import com.benmalek.springBootApp.Repository.GradeRepository;
 import com.benmalek.springBootApp.Repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class GradeServiceImpl implements GradeService {
 
 
-  @Autowired
+  /**
+   * We can use Autowired to inject dependencies or inject it with ctor
+   */
+  /*@Autowired*/
   private GradeRepository gradeRepository;
 
-  @Autowired
+  /*@Autowired*/
   private StudentRepository studentRepository;
 
   @Override
